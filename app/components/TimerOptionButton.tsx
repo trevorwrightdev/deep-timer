@@ -11,7 +11,7 @@ const TimerOptionButton: React.FC<TimerOptionButtonProps> = ({
 }) => {
     return (
         <div
-            className={`w-1/3 h-12 rounded-md grid place-items-center cursor-pointer font-semibold ${
+            className={`w-1/4 h-12 rounded-md grid place-items-center cursor-pointer font-semibold ${
                 selected ? 'bg-gray-900 shadow-lg' : ''
             }`}
             onClick={onClick}

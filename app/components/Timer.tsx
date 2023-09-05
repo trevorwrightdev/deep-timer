@@ -12,6 +12,8 @@ function getOptionSeconds(option: number) {
         return 45 * 60
     } else if (option === 2) {
         return 60 * 60
+    } else if (option === 3) {
+        return 120 * 60
     }
 
     return 0
@@ -84,8 +86,14 @@ const Timer: React.FC = () => {
                 >
                     1h
                 </TimerOptionButton>
+                <TimerOptionButton
+                    selected={selectedOption === 3}
+                    onClick={() => setSelectedOption(3)}
+                >
+                    2h
+                </TimerOptionButton>
             </div>
-            <TimeDisplay timeRemainingInSeconds={timeRemainingInSeconds}/>
+            <TimeDisplay timeRemainingInSeconds={timeRemainingInSeconds} />
             <TimerStartButton
                 timerOn={timerOn}
                 onClick={() => setTimerOn(prev => !prev)}
