@@ -14,7 +14,7 @@ function secondsToHHMMSS(seconds: number) {
 
 const TimeDisplay:React.FC<TimeDisplayProps> = ({ timeRemainingInSeconds }) => {
     
-    return <div className='w-full h-40 bg-gray-900 rounded-md grid place-items-center font-bold text-[48px]'>
+    return <div className='w-full h-40 bg-gray-900 rounded-md grid place-items-center font-bold text-[48px] shadow-lg'>
         {secondsToHHMMSS(timeRemainingInSeconds)}
     </div>
 }

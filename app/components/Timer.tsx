@@ -1,5 +1,5 @@
 'use client'
-import { get } from 'http'
+import { Howl } from 'howler'
 import TimeDisplay from './TimeDisplay'
 import TimerOptionButton from './TimerOptionButton'
 import TimerStartButton from './TimerStartButton'
@@ -7,8 +7,7 @@ import { useEffect, useState } from 'react'
 
 function getOptionSeconds(option: number) {
     if (option === 0) {
-        // return 30 * 60
-        return 5
+        return 30 * 60
     } else if (option === 1) {
         return 45 * 60
     } else if (option === 2) {
@@ -41,8 +40,18 @@ const Timer: React.FC = () => {
                     if (prev <= 1) {
                         // Check if time reaches 0 or below
                         clearInterval(timer) // Clear the timer if the condition is met
-                        setTimerOn(false)
-                        setTimeRemainingInSeconds(getOptionSeconds(selectedOption))
+                        setTimerOn(false) // Set timerOn to false
+                        setTimeRemainingInSeconds(
+                            getOptionSeconds(selectedOption)
+                        ) // Reset timer
+
+                        // play sound
+                        const sound = new Howl({
+                            src: ['/sounds/alarm.mp3'],
+                            volume: 1.0,
+                        })
+                        sound.play()
+
                         return 0 // Return 0 to ensure time doesn't go negative
                     }
                     return prev - 1
